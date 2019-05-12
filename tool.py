@@ -98,13 +98,17 @@ def scroll():
 cnt = 0
 with open('links.txt') as urls:
     for url in urls.read().split('\n'):
-        fox.get(url)
-        time.sleep(10)
-        airlines()
-        scroll()
-        with open('html/{}.html'.format(cnt), 'w', encoding='utf8') as qq:
-            qq.write(fox.page_source)
-        parse(fox.page_source, url, fox.current_url)
+        try:
+            fox.get(url)
+            time.sleep(10)
+            airlines()
+            scroll()
+            with open('html/{}.html'.format(cnt), 'w', encoding='utf8') as qq:
+                qq.write(fox.page_source)
+            parse(fox.page_source, url, fox.current_url)
+        except:
+            with open('error.txt', 'a') as q:
+                q.write(url + '\n')
         cnt += 1
 
 
