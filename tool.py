@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.options import Options
 from datetime import date, timedelta
 from lxml import html
 import socket
+import uuid
 
 
 dates = ['Price{}'.format((date.today() + timedelta(i)).strftime('%Y-%m-%d')) for i in range(366)]
@@ -96,22 +97,18 @@ def scroll():
     time.sleep(2)
 
 
-cnt = 0
-name = socket.gethostname()
-print(name)
-with open('links/{}.txt'.format(name)) as urls:
+with open('links/{}.txt'.format(socket.gethostname())) as urls:
     for url in urls.read().split('\n'):
         try:
             fox.get(url)
             time.sleep(10)
             airlines()
             scroll()
-            with open('html/{}.html'.format(cnt), 'w', encoding='utf8') as qq:
+            with open('html/{}.html'.format(uuid.uuid4().hex), 'w', encoding='utf8') as qq:
                 qq.write(fox.page_source)
             parse(fox.page_source, url, fox.current_url)
         except:
             with open('error.txt', 'a') as q:
                 q.write(url + '\n')
-        cnt += 1
 
 
