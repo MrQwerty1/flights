@@ -26,3 +26,10 @@ https://www.google.com/flights?hl=en&gl=us#flt=PVG.BKK.2019-07-15*BKK.PVG.2019-0
 https://www.google.com/flights?hl=en&gl=us#flt=AMS.PRG.2019-07-15*PRG.AMS.2019-07-22;b:1;c:USD;e:1;sd:1;t:f
 https://www.google.com/flights?hl=en&gl=us#flt=PRG.AMS.2019-07-15*AMS.PRG.2019-07-22;b:1;c:USD;e:1;sd:1;t:f
 https://www.google.com/flights?hl=en&gl=us#flt=ATH.IST.2019-07-15*IST.ATH.2019-07-22;b:1;c:USD;e:1;sd:1;t:f
+https://www.google.com/flights?hl=en&gl=us#flt=IST.ATH.2019-07-15*ATH.IST.2019-07-22;b:1;c:USD;e:1;sd:1;t:f
+https://www.google.com/flights?hl=en&gl=us#flt=CDG.NCE.2019-07-15*NCE.CDG.2019-07-22;b:1;c:USD;e:1;sd:1;t:f
+https://www.google.com/flights?hl=en&gl=us#flt=LHR.PRG.2019-07-15*PRG.LHR.2019-07-22;b:1;c:USD;e:1;sd:1;t:f
+https://www.google.com/flights?hl=en&gl=us#flt=PRG.LHR.2019-07-15*LHR.PRG.2019-07-22;b:1;c:USD;e:1;sd:1;t:f
+https://www.google.com/flights?hl=en&gl=us#flt=LGW.DUB.2019-07-15*DUB.LGW.2019-07-22;b:1;c:USD;e:1;sd:1;t:f
+https://www.google.com/flights?hl=en&gl=us#flt=DUB.LGW.2019-07-15*LGW.DUB.2019-07-22;b:1;c:USD;e:1;sd:1;t:f
+https://www.google.com/flights?hl=en&gl=us#flt=PEK.TLV.2019-07-15*TLV.PEK.2019-07-22;b:1;c:USD;e:1;sd:1;t:f
