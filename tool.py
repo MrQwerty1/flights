@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from datetime import date, timedelta
 from lxml import html
+import socket
 
 
 dates = ['Price{}'.format((date.today() + timedelta(i)).strftime('%Y-%m-%d')) for i in range(366)]
@@ -96,7 +97,7 @@ def scroll():
 
 
 cnt = 0
-with open('links.txt') as urls:
+with open('links/{}.txt'.format(socket.gethostname())) as urls:
     for url in urls.read().split('\n'):
         try:
             fox.get(url)
