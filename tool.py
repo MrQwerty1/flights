@@ -97,7 +97,9 @@ def scroll():
 
 
 cnt = 0
-with open('links/{}.txt'.format(socket.gethostname())) as urls:
+name = socket.gethostname()
+print(name)
+with open('links/{}.txt'.format(name)) as urls:
     for url in urls.read().split('\n'):
         try:
             fox.get(url)
