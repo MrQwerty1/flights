@@ -6,6 +6,11 @@ from datetime import date, timedelta
 from lxml import html
 import socket
 import uuid
+import os
+
+
+if not os.path.exists('html'):
+    os.makedirs('html')
 
 
 dates = ['Price{}'.format((date.today() + timedelta(i)).strftime('%Y-%m-%d')) for i in range(366)]
