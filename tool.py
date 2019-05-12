@@ -12,7 +12,13 @@ fieldnames = ['RequestURL', 'ResponseURL', 'OrigName', 'OrigCode', 'DestName', '
 
 options = Options()
 options.headless = True
-fox = webdriver.Chrome(chrome_options=options)
+options.add_argument("start-maximized")
+options.add_argument("disable-infobars")
+options.add_argument("--disable-extensions")
+options.add_argument("--disable-gpu")
+options.add_argument("--disable-dev-shm-usage")
+options.add_argument("--no-sandbox")
+fox = webdriver.Chrome(executable_path='/usr/bin/chromedriver', chrome_options=options)
 
 
 w = open('data.csv', 'w', encoding='utf8', newline='')
