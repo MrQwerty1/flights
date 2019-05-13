@@ -1,32 +1,20 @@
 import csv
 import time
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from datetime import date, timedelta
 from lxml import html
-import socket
-import uuid
 import os
-
+from urllib.parse import unquote
 
 if not os.path.exists('html'):
     os.makedirs('html')
-
 
 dates = ['Price{}'.format((date.today() + timedelta(i)).strftime('%Y-%m-%d')) for i in range(366)]
 fieldnames = ['RequestURL', 'ResponseURL', 'OrigName', 'OrigCode', 'DestName', 'DestCode', 'ShownFlights',
               'HiddenFlights', 'Airlines', 'MinStops', 'MaxStops', 'CurrentDate'] + dates
 
-options = Options()
-options.headless = True
-options.add_argument("start-maximized")
-options.add_argument("disable-infobars")
-options.add_argument("--disable-extensions")
-options.add_argument("--disable-gpu")
-options.add_argument("--disable-dev-shm-usage")
-options.add_argument("--no-sandbox")
-fox = webdriver.Chrome(executable_path='/usr/bin/chromedriver', chrome_options=options)
-
+fox = webdriver.Firefox()
+fox.maximize_window()
 
 w = open('data.csv', 'w', encoding='utf8', newline='')
 wr = csv.DictWriter(w, fieldnames)
@@ -83,7 +71,8 @@ def airlines():
 
 
 def scroll():
-    fox.find_element_by_xpath("//div[@class='flt-input gws-flights__flex-box gws-flights__flex-filler gws-flights-form__departure-input gws-flights-form__round-trip']").click()
+    fox.find_element_by_xpath(
+        "//div[@class='flt-input gws-flights__flex-box gws-flights__flex-filler gws-flights-form__departure-input gws-flights-form__round-trip']").click()
     time.sleep(3)
     while True:
         try:
@@ -102,18 +91,18 @@ def scroll():
     time.sleep(2)
 
 
-with open('links/{}.txt'.format(socket.gethostname())) as urls:
+cnt = 0
+with open('links.txt') as urls:
     for url in urls.read().split('\n'):
         try:
             fox.get(url)
             time.sleep(10)
             airlines()
             scroll()
-            with open('html/{}.html'.format(uuid.uuid4().hex), 'w', encoding='utf8') as qq:
+            with open('html/{}.html'.format(cnt), 'w', encoding='utf8') as qq:
                 qq.write(fox.page_source)
             parse(fox.page_source, url, fox.current_url)
         except:
             with open('error.txt', 'a') as q:
                 q.write(url + '\n')
-
-
+        cnt += 1
